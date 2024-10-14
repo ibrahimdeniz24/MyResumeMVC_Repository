@@ -1,0 +1,17 @@
+﻿@using MyResume.UI.Areas.Admin.Models.AdminVMs.AdminEducationVMs;
+@model List<AdminEducationListVM>
+
+<h3 class="resume-title">Education</h3>
+@foreach (var item in Model)
+{
+
+    <div class="resume-item">
+        <h4>@item.Departman</h4>
+        <h5>@item.StartDateTime - @item.EndDateTime</h5>
+        <p><em>@item.School</em></p>
+        <p>@item.Description</p>
+    </div>
+
+    <!-- Edn Resume Item -->
+}
+

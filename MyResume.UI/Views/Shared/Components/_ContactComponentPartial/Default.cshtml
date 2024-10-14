@@ -1,0 +1,61 @@
+﻿@using MyResume.UI.Areas.Admin.Models.AdminVMs.AdminContactVMs;
+@model List<AdminContactListVM>
+
+<section id="contact" class="contact section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+
+        <h2>@ViewBag.ContactHead</h2>
+        <p>@ViewBag.ContactDescription</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4">
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                        <i class="bi bi-geo-alt flex-shrink-0"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>@item.Adress</p>
+                        </div>
+                    </div>
+
+                    <!-- End Info Item -->
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                        <i class="bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>@item.Phone</p>
+                        </div>
+                    </div>
+
+                    <!-- End Info Item -->
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>@item.Email</p>
+                        </div>
+                    </div>
+
+                    <!-- End Info Item -->
+                }
+            </div>
+
+            @await Component.InvokeAsync("_MessageComponentPartial");
+
+
+
+        </div>
+
+    </div>
+
+</section>

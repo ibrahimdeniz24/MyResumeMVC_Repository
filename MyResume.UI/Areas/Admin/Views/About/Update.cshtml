@@ -1,0 +1,133 @@
+﻿@model MyResume.UI.Areas.Admin.Models.AdminVMs.AdminAboutVMs.AdminAboutUpdateVM
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Update</h5>
+        <div class="col-md-4">
+            <form asp-action="Update" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row mb-3" hidden >
+                    <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="NewPicture" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input type="file" asp-for="NewPicture" class="form-control" id="formFile" />
+                        <span asp-validation-for="NewPicture" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Head" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Head" class="form-control" />
+                        <span asp-validation-for="Head" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="HeadDesciprtion" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="HeadDesciprtion" class="form-control" />
+                        <span asp-validation-for="HeadDesciprtion" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Title" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="TitleDescription" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="TitleDescription" class="form-control" />
+                        <span asp-validation-for="TitleDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="SubDescription" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="SubDescription" class="form-control" />
+                        <span asp-validation-for="SubDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Degree" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Degree" class="form-control" />
+                        <span asp-validation-for="Degree" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="BirthDate" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="BirthDate" class="form-control" />
+                        <span asp-validation-for="BirthDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Age" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="row mb-3">
+                        <label asp-for="WebSite" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="WebSite" class="form-control" />
+                            <span asp-validation-for="WebSite" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label asp-for="Phone" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label asp-for="City" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="City" class="form-control" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label asp-for="FreeLance" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="FreeLance" class="form-control" />
+                            <span asp-validation-for="FreeLance" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Submit Button</label>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Submit Form</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+

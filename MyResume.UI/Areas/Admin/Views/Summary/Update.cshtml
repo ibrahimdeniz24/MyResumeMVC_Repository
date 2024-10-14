@@ -1,0 +1,64 @@
+﻿@model MyResume.UI.Areas.Admin.Models.AdminVMs.AdminSummaryVMs.AdminSummaryUpdateVM
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Update</h5>
+        <div class="col-md-4">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row mb-3" hidden>
+                    <label asp-for="Name" class="col-sm-2 col-form-labell"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+
+                    <!-- Gizli input alanı, ASP.NET Core modeliyle bağlanıyor -->
+                    <input type="hidden" asp-for="Description" id="Content" />
+
+                    <div class="col-sm-10">
+                        <!-- Quill editörü için div -->
+                        <div class="quill-editor-default">
+                        </div>
+                    </div>
+
+                    <!-- Validasyon mesajı -->
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Submit Button</label>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Submit Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+<!-- Quill script ve init -->
+<script>
+    var quill = new Quill('.quill-editor-default', {
+        theme: 'snow'
+    });
+
+    // Form submit olayında Quill içeriğini gizli input'a aktar
+    document.querySelector('form').onsubmit = function () {
+        var content = document.querySelector('#Content');
+        content.value = quill.root.innerHTML; // Quill içeriği gizli input'a aktarılır
+    };
+</script>
+

@@ -1,0 +1,86 @@
+﻿@model MyResume.UI.Areas.Admin.Models.AdminVMs.AdminEducationVMs.AdminEducationCreateVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Create</h5>
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row mb-3">
+                    <label asp-for="School" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="School" class="form-control" />
+                        <span asp-validation-for="School" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Departman" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Departman" class="form-control" />
+                        <span asp-validation-for="Departman" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="StartDateTime" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input type="date asp-for="StartDateTime" class="form-control" />
+                        <span asp-validation-for="StartDateTime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="EndDateTime" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input type="date" asp-for="EndDateTime" class="form-control" />
+                        <span asp-validation-for="EndDateTime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+
+                    <!-- Gizli input alanı, ASP.NET Core modeliyle bağlanıyor -->
+                    <input type="hidden" asp-for="Description" id="Content" />
+
+                    <div class="col-sm-10">
+                        <!-- Quill editörü için div -->
+                        <div class="quill-editor-default">
+                        </div>
+                    </div>
+
+                    <!-- Validasyon mesajı -->
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Submit Button</label>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Submit Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+<!-- Quill script ve init -->
+<script>
+    var quill = new Quill('.quill-editor-default', {
+        theme: 'snow'
+    });
+
+    // Form submit olayında Quill içeriğini gizli input'a aktar
+    document.querySelector('form').onsubmit = function () {
+        var content = document.querySelector('#Content');
+        content.value = quill.root.innerHTML; // Quill içeriği gizli input'a aktarılır
+    };
+</script>
+

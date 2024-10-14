@@ -1,0 +1,127 @@
+﻿@model IEnumerable<MyResume.UI.Areas.Admin.Models.AdminVMs.AdminAboutVMs.AdminAboutListVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Head)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfilePicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadDesciprtion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Degree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebSite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeLance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td hidden>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Head)
+                </td>
+                <td>
+                    @if (item.ProfilePicture != null && item.ProfilePicture.Length > 0)
+                    {
+                        <img src="@($"data:image/png;base64,{Convert.ToBase64String(item.ProfilePicture)}")" witdh="150px" height="150px" alt="Profile Picture" />
+                    }
+                    else
+                    {
+                        <span>No Profile Picture</span> <!-- Alternatif içerik veya mesaj -->
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeadDesciprtion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Degree)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WebSite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FreeLance)
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
