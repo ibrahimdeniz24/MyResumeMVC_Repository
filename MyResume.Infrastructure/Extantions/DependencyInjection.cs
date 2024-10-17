@@ -30,7 +30,7 @@ namespace MyResume.Infrastructure.Extantions
             services.AddDbContext<AppDbContext>(options =>
             {
 
-                options.UseSqlServer(configuration.GetConnectionString("AppConnectionString"));
+                options.UseSqlServer(configuration.GetConnectionString("OnlineConnectionString"));
             });
 
             services.AddScoped<IFeatureRepository, FeatureRepository>();
