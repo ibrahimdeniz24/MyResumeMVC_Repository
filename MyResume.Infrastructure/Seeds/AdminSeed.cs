@@ -20,7 +20,7 @@ namespace MyResume.Infrastructure.Seeds
         public static async Task AdminSeedAsync(IConfiguration configuration)
         {
             var dbContextBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            dbContextBuilder.UseSqlServer(configuration.GetConnectionString("AppConnectionString"));
+            dbContextBuilder.UseSqlServer(configuration.GetConnectionString("OnlineConnectionString"));
             AppDbContext context = new AppDbContext(dbContextBuilder.Options);
 
             if (!context.Roles.Any())
