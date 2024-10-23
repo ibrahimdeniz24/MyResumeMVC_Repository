@@ -14,11 +14,11 @@ namespace MyResume.Infrastructure.Configuration
         public override void Configure(EntityTypeBuilder<About> builder)
         {
             builder.Property(a => a.Head).IsRequired().HasMaxLength(128);
-            builder.Property(a => a.HeadDesciprtion).IsRequired(false).HasMaxLength(128);
+            builder.Property(a => a.HeadDesciprtion).IsRequired(false).HasMaxLength(1000);
             builder.Property(a => a.ProfilePicture).IsRequired(false);
             builder.Property(a => a.Title).IsRequired().HasMaxLength(128);
-            builder.Property(a => a.TitleDescription).IsRequired(false).HasMaxLength(128);
-            builder.Property(a => a.SubDescription).IsRequired(false).HasMaxLength(128);
+            builder.Property(a => a.TitleDescription).IsRequired(false).HasMaxLength(1000);
+            builder.Property(a => a.SubDescription).IsRequired(false).HasMaxLength(1000);
             builder.Property(a => a.Degree).IsRequired(false).HasMaxLength(128);
             builder.Property(a => a.BirthDate).IsRequired();
             builder.Property(a => a.Age).IsRequired(false);
