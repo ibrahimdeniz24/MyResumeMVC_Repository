@@ -15,10 +15,10 @@ namespace MyResume.Infrastructure.Configuration
         {
 
             builder.Property(a => a.Title).IsRequired();
-            builder.Property(a => a.Description).IsRequired().HasMaxLength(150);
+            builder.Property(a => a.Description).IsRequired().HasMaxLength(1000);
             builder.Property(a => a.Phone).IsRequired().HasMaxLength(150);
             builder.Property(a => a.Email).IsRequired().HasMaxLength(150);
-            builder.Property(a => a.Adress).IsRequired().HasMaxLength(150);
+            builder.Property(a => a.Adress).IsRequired().HasMaxLength(1000);
             base.Configure(builder);
         }
     }

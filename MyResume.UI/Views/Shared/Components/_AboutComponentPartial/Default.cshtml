@@ -5,11 +5,14 @@
 
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
+        @foreach (var item in Model)
+        {
+            <h2>@item.Head</h2>
+            <p>@item.HeadDesciprtion</p>
+        }
 
 
-
-        <h2>@ViewBag.aboutTitle</h2>
-        <p>@ViewBag.AboutDesciprtion</p>
+      
     </div>
 
     <!-- End Section Title -->

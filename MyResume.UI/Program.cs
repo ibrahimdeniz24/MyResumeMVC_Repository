@@ -15,7 +15,7 @@ builder.Services.AddUIServices();
 
 builder.Services.AddHangfire(config =>
 {
-    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("AppConnectionString"));
+    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("OnlineConnectionString"));
 });
 builder.Services.AddHangfireServer();
 

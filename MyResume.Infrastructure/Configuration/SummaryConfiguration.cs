@@ -16,7 +16,7 @@ namespace MyResume.Infrastructure.Configuration
 
 
             builder.Property(a => a.Name).IsRequired().HasMaxLength(128);
-            builder.Property(a => a.Description).IsRequired(false).HasMaxLength(128);
+            builder.Property(a => a.Description).IsRequired(false).HasMaxLength(1000);
             base.Configure(builder);
         }
 
