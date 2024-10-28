@@ -24,6 +24,18 @@ namespace MyResume.Business.Services.AboutServices
 
         public async Task<IResult> AddAsync(AboutCreateDTO aboutCreateDTO)
         {
+            if (aboutCreateDTO is null)
+            {
+                return new ErorResult("Eklenecek veri Bulunamadı");
+            }
+
+            bool aboutExists = await _aboutRepositories.AnyAsync();
+
+            if (aboutExists) 
+            {
+                return new ErorResult("Sistemde bir About kayıtlı");
+            }
+
             var newAbout = aboutCreateDTO.Adapt<About>();
 
             await _aboutRepositories.AddAsync(newAbout);

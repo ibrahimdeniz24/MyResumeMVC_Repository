@@ -40,7 +40,7 @@
                             <div class="col-lg-8" data-aos="fade-up">
                                 <div class="portfolio-description">
                                     <h2>@Model.ProjectName</h2>
-                                @Model.Description
+                                <p>@Html.Raw(Model.Description)</p>
 
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                     <li><strong>Category</strong> @Model.Category</li>
                                         <li><strong>Client</strong> NULL</li>
                                     <li><strong>Project date</strong> @Model.ProjectDate</li>
-                                    <li><strong>Project URL</strong> <a href="#">@Model.Url</a></li>
+                                    <li><strong>Project URL</strong> <a href="@Model.Url" target="_blank">@Model.Url</a></li>
                                         <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
                                     </ul>
                                 </div>
