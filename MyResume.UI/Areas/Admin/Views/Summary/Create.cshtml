@@ -63,8 +63,8 @@
         // Her değişiklikte gizli input alanını güncelleme
         quill.on('text-change', function () {
             var htmlContent = quill.root.innerHTML;
-            var plainText = htmlContent.replace(/<[^>]+>/g, ''); // HTML etiketlerini kaldır
-            document.getElementById('Description').value = plainText;
+            // var plainText = htmlContent.replace(/<[^>]+>/g, ''); // HTML etiketlerini kaldır
+            document.getElementById('Description').value = htmlContent;
         });
 
 
