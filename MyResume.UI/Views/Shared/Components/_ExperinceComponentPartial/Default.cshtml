@@ -13,7 +13,7 @@
         <div class="row">
 
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                @await Component.InvokeAsync("_SummaryCompanentPartial")
+               @*  @await Component.InvokeAsync("_SummaryCompanentPartial") *@
                 @await Component.InvokeAsync("_EducationComponentPartial")
 
 
@@ -26,10 +26,10 @@
                     {
 
                         <h4>@item.Title</h4>
-                        <h5>@item.Date - Present</h5>
-                        <p><em>Experion, New York, NY </em></p>
+                        <h5>@item.Date </h5>
+                        <p><em>@item.Head </em></p>
                         <ul>
-                            <li>@item.Desciption</li>
+                            <li>@Html.Raw(@item.Desciption)</li>
                         </ul>
                     }
                 </div><!-- Edn Resume Item -->
