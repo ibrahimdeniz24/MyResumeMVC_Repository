@@ -19,7 +19,7 @@ namespace MyResume.Infrastructure.Configuration
             builder.Property(a => a.Departman).IsRequired().HasMaxLength(128);
             builder.Property(a => a.StartDateTime).IsRequired(false);
             builder.Property(a => a.EndDateTime).IsRequired(false);
-            builder.Property(a => a.Description).IsRequired(false).HasMaxLength(300);
+            builder.Property(a => a.Description).IsRequired(false).HasMaxLength(1300);
             base.Configure(builder);
         }
     }

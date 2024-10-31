@@ -51,7 +51,7 @@
                         <label asp-for="Desciption" class="col-sm-2 col-form-label"></label>
 
                         <!-- Gizli input alanı, ASP.NET Core modeliyle bağlanıyor -->
-                        <input type="hidden" asp-for="Desciption" id="Content" />
+                        <input type="hidden" asp-for="Desciption" id="Description" />
 
                         <div class="col-sm-10">
                             <!-- Quill editörü için div -->
@@ -93,14 +93,14 @@
             quill.on('text-change', function () {
                 var htmlContent = quill.root.innerHTML;
                 // var plainText = htmlContent.replace(/<[^>]+>/g, ''); // HTML etiketlerini kaldır
-                document.getElementById('Desciption').value = htmlContent;
+                document.getElementById('Description').value = htmlContent;
             });
 
 
             // Form gönderilmeden önce gizli input alanını güncelleme (isteğe bağlı)
             var form = document.querySelector('form');
             form.onsubmit = function () {
-                document.getElementById('Desciption').value = quill.root.innerHTML;
+                document.getElementById('Description').value = quill.root.innerHTML;
             };
         });
     </script>

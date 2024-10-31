@@ -56,7 +56,7 @@
                                 {
                                     <tr>
                                         <td>@item.ProjectName</td>
-                                        <td>@item.ProjectDate</td>
+                                        <td>@item.ProjectDate.Value.ToShortDateString()</td>
                                         <td>@item.Url</td>
                                         <td>Proje Detayları için <a href="/Portfolio/Details/@item.Id">Tıklayınız</a></td>
                                     </tr>
