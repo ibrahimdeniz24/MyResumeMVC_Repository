@@ -14,6 +14,7 @@ public class MessageController :BaseController
     private readonly IMessageService _messageService;
     private readonly IEmailService _emailService;
 
+    const string mail = "ibrahimdeniz24@hotmail.com";
     public MessageController(IMessageService messageService, IEmailService emailService)
     {
         _messageService = messageService;
@@ -38,14 +39,22 @@ public class MessageController :BaseController
         }
 
 
+        RedirectToAction("MessageSent");
+
         BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(
                messageCreateVM.Email,
                "Yeni İletişim Formu Mesajı",
-               $"<p>Gönderen: {messageCreateVM.NameSurname}</p><p>Email: {messageCreateVM.Email}</p><p>Mesaj: {messageCreateVM.MessageDetail}</p>"
+               $"<p>Gönderen: {messageCreateVM.NameSurname}</p><p>Email: {messageCreateVM.Email}</p><p>Mesaj: Mesajınız Başarı ile Gönderilmiştir. </p>"
            ));
-        SuccessNotyf(result.Message);
-        return RedirectToAction("MessageSent");
 
+        BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(
+             mail,
+             "Yeni İletişim Formu Mesajı",
+             $"<p>Gönderen: {messageCreateVM.NameSurname}</p><p>Email: {messageCreateVM.Email}</p><p>Mesaj:  {messageCreateVM.MessageDetail} </p>"
+         ));
+
+        SuccessNotyf(result.Message);
+        return View("MessageSent");
 
     }
 
