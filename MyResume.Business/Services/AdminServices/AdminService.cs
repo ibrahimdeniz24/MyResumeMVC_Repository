@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using MyResume.Business.DTOs.AdminDTOs;
+using MyResume.Business.Services.AccountServices;
 using MyResume.Domain.Entities;
 using MyResume.Domain.Utilities.Concretes;
 using MyResume.Domain.Utilities.Interfaces;
@@ -15,10 +16,12 @@ namespace MyResume.Business.Services.AdminServices
     public class AdminService : IAdminService
     {
         private readonly IAdminRepository _adminRepository;
+        private readonly IAccountService _accountService;
 
-        public AdminService(IAdminRepository adminRepository)
+        public AdminService(IAdminRepository adminRepository, IAccountService accountService)
         {
             _adminRepository = adminRepository;
+            _accountService = accountService;
         }
 
         public async Task<IResult> AddAsync(AdminCreateDTO adminCreateDTO)
@@ -62,14 +65,29 @@ namespace MyResume.Business.Services.AdminServices
             }
         }
 
-        public Task<IDataResult<List<AdminListDTO>>> GetAllAsync()
+        public async Task<IDataResult<List<AdminListDTO>>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            
+                throw new NotImplementedException();
         }
 
-        public Task<IDataResult<AdminDTO>> GetByIdAsync(Guid id)
+        public async Task<IDataResult<AdminDTO>> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var admin = await _adminRepository.GetByIdAsync(id);
+            try
+            {
+                if (admin is null)
+                {
+                    return new ErorDataResult<AdminDTO>(admin.Adapt<AdminDTO>(),"Admin Bulunumadı");
+                }
+
+                return new SuccsessDataResult<AdminDTO>(admin.Adapt<AdminDTO>(), "Admin Bulma Başarılı");
+            }
+            catch (Exception ex)
+            {
+
+                return new ErorDataResult<AdminDTO>(admin.Adapt<AdminDTO>(), "Admin Bulunumadı" + ex.Message);
+            }
         }
 
         public Task<IResult> UpdateAsync(AdminUpdateDTO adminUpdateDTO)

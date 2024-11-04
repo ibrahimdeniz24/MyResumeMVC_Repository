@@ -1,12 +1,11 @@
 ﻿using Hangfire;
-using MyResume.Business.Services.HangFireServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyResume.Business.Services.FeatureServices
+namespace MyResume.Business.Services.HangFireServices
 {
     public class HangFireService : IHangFireServices
     {
