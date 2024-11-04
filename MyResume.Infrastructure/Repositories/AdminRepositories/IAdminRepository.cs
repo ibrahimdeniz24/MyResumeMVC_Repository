@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace MyResume.Infrastructure.Repositories.AdminRepositories
 {
-    public interface IAdminRepository : IAsyncRepository, IAsyncInsertableRepository<Admin>, IAsyncFindableRepository<Admin>, IAsyncDeleteableRepository<Admin>, IAsyncOrderableRepository<Admin>, IAsyncQueraybleRepository<Admin>, IAsyncUpdatableRepository<Admin>
+    public interface IAdminRepository : IAsyncRepository, IAsyncInsertableRepository<Admin>, IAsyncFindableRepository<Admin>, IAsyncDeleteableRepository<Admin>, IAsyncOrderableRepository<Admin>, IAsyncQueraybleRepository<Admin>, IAsyncUpdatableRepository<Admin>,
+        IAsyncTransactionRepository
     {
     }
 }

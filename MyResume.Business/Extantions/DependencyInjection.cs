@@ -2,6 +2,7 @@
 using Hangfire.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using MyResume.Business.Services.AboutServices;
+using MyResume.Business.Services.AccountServices;
 using MyResume.Business.Services.AdminServices;
 using MyResume.Business.Services.ContactServices;
 using MyResume.Business.Services.EducationServices;
@@ -39,6 +40,7 @@ namespace MyResume.Business.Extantions
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IHangFireServices, HangFireService>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }
