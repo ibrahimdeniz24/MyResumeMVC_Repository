@@ -1,7 +1,13 @@
 ﻿@model MyResume.UI.Models.ViewModels.MessageVM.MessageCreateVM;
+@inject IConfiguration configuration
+
+@{
+    var siteKey = configuration["ReCaptchaSettings:SiteKey"];
+}
 
 <div class="col-lg-8">
-    <form asp-controller="Message" asp-action="Create" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+    <form asp-controller="Message" asp-action="Create" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" id="messageForm">
+        
         <div class="row gy-4">
 
             <div class="col-md-6">
@@ -23,15 +29,40 @@
                 <textarea asp-for=MessageDetail class="form-control" rows="6" placeholder="Message" required=""></textarea>
                 <span asp-validation-for="MessageDetail" class="text-danger"></span>
             </div>
+            <div class="col-md-12">
+                @* <div id ="html_element"></div> *@
+                <div class="g-recaptcha" data-sitekey="@configuration["ReCaptchaSettings:SiteKey"]"></div>
+            </div>
 
             <div class="col-md-12 text-center">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                <button type="submit">Send Message</button>
+                <input type="hidden" id="recaptchaToken"  name="RecaptchaToken" />
+                <button type="submit" >Send Message</button>
+                
             </div>
 
         </div>
     </form>
 </div><!-- End Contact Form -->
+<script>
+    document.getElementById('messageForm').addEventListener('submit', function(event) {
+        // Formun otomatik gönderimini engelle
+        event.preventDefault();
+
+        // reCAPTCHA yanıtını almak
+        var recaptchaResponse = grecaptcha.getResponse();   
+        // reCAPTCHA yanıtını gizli alana ekle
+        document.getElementById("recaptchaToken").value = recaptchaResponse;
+
+        // Formu manuel olarak gönder
+        event.target.submit();
+    });
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+
+
+                

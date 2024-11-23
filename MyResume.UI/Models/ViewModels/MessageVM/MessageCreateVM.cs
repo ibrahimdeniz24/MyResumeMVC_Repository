@@ -12,5 +12,8 @@
         public DateTime? SendDate { get; set; }
 
         public bool? IsRead { get; set; }
+
+        public string RecaptchaToken { get; set; }
+
     }
 }

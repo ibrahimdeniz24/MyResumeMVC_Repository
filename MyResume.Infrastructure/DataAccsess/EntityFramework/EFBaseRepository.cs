@@ -115,6 +115,8 @@ namespace MyResume.Infrastructure.DataAccsess.EntityFramework
         protected IQueryable<TEntity> GetAllActives(bool tracking = true)
         {
             //statüsü deleted olanları getirme.
+            //var values = _table.Where(x => x.Status != Status.Deleted);
+            //Statü olmadıgından yapmadık.
             var values = _table;
 
             return tracking ? values : values.AsNoTracking(); //Gelen veri trackinge tdahil olmadan gelir.

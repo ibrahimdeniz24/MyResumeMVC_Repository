@@ -1,5 +1,6 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyResume.Business.Services.AboutServices;
 using MyResume.Business.Services.AccountServices;
@@ -11,9 +12,11 @@ using MyResume.Business.Services.FeatureServices;
 using MyResume.Business.Services.HangFireServices;
 using MyResume.Business.Services.MessageServices;
 using MyResume.Business.Services.PotfolioServices;
+using MyResume.Business.Services.ReCAPTCHAServices;
 using MyResume.Business.Services.ResumeServices;
 using MyResume.Business.Services.SkillServices;
 using MyResume.Business.Services.SummaryServices;
+using MyResume.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +44,8 @@ namespace MyResume.Business.Extantions
             services.AddScoped<IHangFireServices, HangFireService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IReCAPTCHAService, ReCaptchaServiceV3>();
+            services.AddHttpClient<ReCaptchaServiceV3>();
 
             return services;
         }

@@ -19,6 +19,9 @@ builder.Services.AddHangfire(config =>
 });
 builder.Services.AddHangfireServer();
 
+builder.Services.Configure<ReCaptchaSettings>(builder.Configuration.GetSection("ReCaptchaSettings"));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
