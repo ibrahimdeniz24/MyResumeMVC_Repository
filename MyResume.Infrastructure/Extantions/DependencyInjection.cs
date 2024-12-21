@@ -46,7 +46,7 @@ namespace MyResume.Infrastructure.Extantions
             services.AddScoped<IAdminRepository, AdminRepository>();
 
 
-            AdminSeed.AdminSeedAsync(configuration).GetAwaiter().GetResult();
+            //AdminSeed.AdminSeedAsync(configuration).GetAwaiter().GetResult();
 
 
             return services;

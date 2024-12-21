@@ -21,5 +21,7 @@ namespace MyResume.Business.Services.AdminServices
         Task<IResult> UpdateAsync(AdminUpdateDTO adminUpdateDTO);
 
         Task<IResult> DeleteAsync(Guid id);
+
+        Task<IDataResult<AdminDTO>> GetCurrentAdminAsync();
     }
 }

@@ -17,6 +17,13 @@ namespace MyResume.Infrastructure.Configuration
             builder.Property(a => a.LastName).IsRequired().HasMaxLength(150);
             builder.Property(a => a.Email).IsRequired().HasMaxLength(100);
             builder.Property(a => a.IdentityId).IsRequired();
+            builder.Property(a => a.Adress).IsRequired(false);
+            builder.Property(a => a.BirthDate).IsRequired(false);
+            builder.Property(a => a.Country).IsRequired(false);
+            builder.Property(a => a.ProfilePicture).IsRequired(false);
+            builder.Property(a => a.PhoneNumber).IsRequired(false);
+            builder.Property(a => a.Title).IsRequired(false);
+
 
             base.Configure(builder);
         }
