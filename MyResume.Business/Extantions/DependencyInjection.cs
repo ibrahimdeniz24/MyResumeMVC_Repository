@@ -46,7 +46,7 @@ namespace MyResume.Business.Extantions
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IReCAPTCHAService, ReCaptchaServiceV3>();
             services.AddHttpClient<ReCaptchaServiceV3>();
-
+            services.AddHttpContextAccessor();
             return services;
         }
     }

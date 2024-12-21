@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyResume.Business.DTOs.AdminDTOs
+﻿namespace MyResume.UI.Areas.Admin.Models.AdminVMs.AdminAdminVMs
 {
-    public class AdminDTO
+    public class AdminAdminUpdateVM
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
@@ -20,6 +14,7 @@ namespace MyResume.Business.DTOs.AdminDTOs
 
         public DateTime? BirthDate { get; set; }
         public byte[]? ProfilePicture { get; set; }
+        public IFormFile? NewPicture { get; set; }
 
         public string? Country { get; set; }
     }

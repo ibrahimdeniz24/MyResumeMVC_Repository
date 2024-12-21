@@ -8,6 +8,7 @@ using MyResume.Infrastructure.Repositories.AdminRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,11 +18,13 @@ namespace MyResume.Business.Services.AdminServices
     {
         private readonly IAdminRepository _adminRepository;
         private readonly IAccountService _accountService;
+        private readonly Microsoft.AspNetCore.Http.IHttpContextAccessor _httpContextAccessor;
 
-        public AdminService(IAdminRepository adminRepository, IAccountService accountService)
+        public AdminService(IAdminRepository adminRepository, IAccountService accountService, Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor)
         {
             _adminRepository = adminRepository;
             _accountService = accountService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IResult> AddAsync(AdminCreateDTO adminCreateDTO)
@@ -88,6 +91,23 @@ namespace MyResume.Business.Services.AdminServices
 
                 return new ErorDataResult<AdminDTO>(admin.Adapt<AdminDTO>(), "Admin Bulunumadı" + ex.Message);
             }
+        }
+
+        public async Task<IDataResult<AdminDTO>> GetCurrentAdminAsync()
+        {
+            var identityUserId = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(identityUserId))
+                return new ErorDataResult<AdminDTO>("Messages.UserNotFound");
+
+            var admin = await _adminRepository.GetAsync(x => x.IdentityId == identityUserId);
+
+            if (admin == null)
+                return new ErorDataResult<AdminDTO>("Messages.AdminNotFound");
+
+            var adminDto = admin.Adapt<AdminDTO>();
+
+            return new SuccsessDataResult<AdminDTO>(adminDto, "Messages.AdminFound");
         }
 
         public Task<IResult> UpdateAsync(AdminUpdateDTO adminUpdateDTO)
